@@ -20,7 +20,7 @@ message Track {
     ignore: IGNORE_IF_ZERO_VALUE
     string: {uuid: true}
   }];
-  string title = 2 [(buf.validate.field).string.min_len = 1];
+  string name = 2 [(buf.validate.field).string.min_len = 1];
   string artist = 3 [(buf.validate.field).string.min_len = 1];
   google.protobuf.Duration duration = 4 [(buf.validate.field).required = true];
   int32 track_number = 5 [(buf.validate.field).int32.gte = 1];
