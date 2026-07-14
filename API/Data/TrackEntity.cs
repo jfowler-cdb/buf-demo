@@ -1,12 +1,13 @@
 namespace API.Data;
 
-public class ReleaseEntity
+public class TrackEntity
 {
     public string Id { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Artist { get; set; } = string.Empty;
-    public string Label { get; set; } = string.Empty;
-    public DateTime ReleaseDate { get; set; }
+    public TimeSpan Duration { get; set; }
+    public int TrackNumber { get; set; }
+    public string Isrc { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 

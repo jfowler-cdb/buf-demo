@@ -24,9 +24,7 @@ message Track {
   string artist = 3 [(buf.validate.field).string.min_len = 1];
   google.protobuf.Duration duration = 4 [(buf.validate.field).required = true];
   int32 track_number = 5 [(buf.validate.field).int32.gte = 1];
-  string isrc = 6 [(buf.validate.field).string = {
-    pattern: "^([A-Z]{2}[A-Z0-9]{3}[0-9]{7})?$"
-  }];
+  string isrc = 6 [(buf.validate.field).string = {pattern: "^([A-Z]{2}[A-Z0-9]{3}[0-9]{7})?$"}];
 
   // IDs of releases this track appears on.
   repeated string release_ids = 7;

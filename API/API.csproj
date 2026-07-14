@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <WarningsAsErrors>RMG012;RMG020</WarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

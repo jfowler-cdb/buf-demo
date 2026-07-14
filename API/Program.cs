@@ -33,15 +33,16 @@ var app = builder.Build();
 // Handle `dotnet run -- seed` command
 if (args.Length > 0 && args[0] == "seed")
 {
-    var seedPath = args.Length > 1 ? args[1] : Path.Combine("..", "seed", "releases.yaml");
+    var seedDir = args.Length > 1 ? args[1] : Path.Combine("..", "seed");
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<ReleasesDbContext>();
-    await Seeder.RunAsync(db, seedPath);
+    await Seeder.RunAsync(db, seedDir);
     return;
 }
 
 app.UseCors();
 app.UseGrpcWeb();
 app.MapGrpcService<ReleaseServiceImpl>().EnableGrpcWeb();
+app.MapGrpcService<TrackServiceImpl>().EnableGrpcWeb();
 
 app.Run();

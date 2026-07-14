@@ -1,0 +1,181 @@
+tracks:
+  - title: "Midnight Waltz"
+    artist: "Luna Vega"
+    duration_seconds: 234
+    track_number: 1
+    isrc: "USRC17600001"
+    releases: ["Midnight Echoes"]
+  - title: "Echo Valley"
+    artist: "Luna Vega"
+    duration_seconds: 198
+    track_number: 2
+    isrc: "USRC17600002"
+    releases: ["Midnight Echoes"]
+  - title: "Starfall"
+    artist: "Luna Vega"
+    duration_seconds: 267
+    track_number: 3
+    isrc: "USRC17600003"
+    releases: ["Midnight Echoes"]
+  - title: "Neon Rain"
+    artist: "The Drift"
+    duration_seconds: 212
+    track_number: 1
+    isrc: "USRC17600004"
+    releases: ["Neon Skyline"]
+  - title: "City Lights"
+    artist: "The Drift"
+    duration_seconds: 245
+    track_number: 2
+    isrc: "USRC17600005"
+    releases: ["Neon Skyline"]
+  - title: "Skyline Drive"
+    artist: "The Drift"
+    duration_seconds: 301
+    track_number: 3
+    isrc: "USRC17600006"
+    releases: ["Neon Skyline"]
+  - title: "Spark"
+    artist: "Sage Holloway"
+    duration_seconds: 187
+    track_number: 1
+    isrc: "USRC17600007"
+    releases: ["Ember"]
+  - title: "Burning Low"
+    artist: "Sage Holloway"
+    duration_seconds: 256
+    track_number: 2
+    isrc: "USRC17600008"
+    releases: ["Ember"]
+  - title: "Ash & Dust"
+    artist: "Sage Holloway"
+    duration_seconds: 223
+    track_number: 3
+    isrc: "USRC17600009"
+    releases: ["Ember"]
+  - title: "Riptide"
+    artist: "Ocean Park"
+    duration_seconds: 195
+    track_number: 1
+    isrc: "USRC17600010"
+    releases: ["Tides of Change"]
+  - title: "Salt Water"
+    artist: "Ocean Park"
+    duration_seconds: 278
+    track_number: 2
+    isrc: "USRC17600011"
+    releases: ["Tides of Change"]
+  - title: "Horizon"
+    artist: "Ocean Park"
+    duration_seconds: 315
+    track_number: 3
+    isrc: "USRC17600012"
+    releases: ["Tides of Change"]
+  - title: "Warm Glow"
+    artist: "Ava Sinclair"
+    duration_seconds: 241
+    track_number: 1
+    isrc: "USRC17600013"
+    releases: ["Golden Hour"]
+  - title: "Amber Light"
+    artist: "Ava Sinclair"
+    duration_seconds: 199
+    track_number: 2
+    isrc: "USRC17600014"
+    releases: ["Golden Hour"]
+  - title: "Sundial"
+    artist: "Ava Sinclair"
+    duration_seconds: 263
+    track_number: 3
+    isrc: "USRC17600015"
+    releases: ["Golden Hour"]
+  - title: "White Noise"
+    artist: "Circuit Breaker"
+    duration_seconds: 203
+    track_number: 1
+    isrc: "USRC17600016"
+    releases: ["Static Dreams"]
+  - title: "Feedback Loop"
+    artist: "Circuit Breaker"
+    duration_seconds: 247
+    track_number: 2
+    isrc: "USRC17600017"
+    releases: ["Static Dreams"]
+  - title: "Signal Lost"
+    artist: "Circuit Breaker"
+    duration_seconds: 289
+    track_number: 3
+    isrc: "USRC17600018"
+    releases: ["Static Dreams", "Echo Chamber"]
+  - title: "Petal"
+    artist: "Ivy Lane"
+    duration_seconds: 176
+    track_number: 1
+    isrc: "USRC17600019"
+    releases: ["Wildflower", "Cherry Blossom"]
+  - title: "Bloom"
+    artist: "Ivy Lane"
+    duration_seconds: 218
+    track_number: 2
+    isrc: "USRC17600020"
+    releases: ["Wildflower"]
+  - title: "Roots"
+    artist: "Ivy Lane"
+    duration_seconds: 294
+    track_number: 3
+    isrc: "USRC17600021"
+    releases: ["Wildflower"]
+  - title: "Twilight Run"
+    artist: "Dusk Patrol"
+    duration_seconds: 232
+    track_number: 1
+    isrc: "USRC17600022"
+    releases: ["Afterglow"]
+  - title: "Last Light"
+    artist: "Dusk Patrol"
+    duration_seconds: 271
+    track_number: 2
+    isrc: "USRC17600023"
+    releases: ["Afterglow"]
+  - title: "Shattered"
+    artist: "Glass Atlas"
+    duration_seconds: 189
+    track_number: 1
+    isrc: "USRC17600024"
+    releases: ["Fragments", "Kaleidoscope"]
+  - title: "Refraction"
+    artist: "Glass Atlas"
+    duration_seconds: 254
+    track_number: 2
+    isrc: "USRC17600025"
+    releases: ["Fragments"]
+  - title: "Thunderclap"
+    artist: "Storm Calder"
+    duration_seconds: 312
+    track_number: 1
+    isrc: "USRC17600026"
+    releases: ["Velvet Thunder"]
+  - title: "Rolling Sky"
+    artist: "Storm Calder"
+    duration_seconds: 228
+    track_number: 2
+    isrc: "USRC17600027"
+    releases: ["Velvet Thunder"]
+  - title: "Crescent"
+    artist: "Clara Night"
+    duration_seconds: 197
+    track_number: 1
+    isrc: "USRC17600028"
+    releases: ["Paper Moons"]
+  - title: "Lullaby"
+    artist: "Clara Night"
+    duration_seconds: 243
+    track_number: 2
+    isrc: "USRC17600029"
+    releases: ["Paper Moons"]
+  - title: "Anvil"
+    artist: "The Foundry"
+    duration_seconds: 267
+    track_number: 1
+    isrc: "USRC17600030"
+    releases: ["Rust & Revival", "Iron Lung"]
