@@ -2,12 +2,6 @@
 
 version: '3'
 
-vars:
-  DOTNET_TOOLS: "{{.HOME}}/.dotnet/tools"
-
-env:
-  PATH: "{{.DOTNET_TOOLS}}:{{.PATH}}"
-
 tasks:
   generate:
     desc: Generate Protobuf code using Buf

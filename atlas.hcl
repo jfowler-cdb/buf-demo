@@ -1,6 +1,6 @@
 data "external_schema" "ef" {
   program = [
-    "atlas-ef",
+    "sh", "-c", "$HOME/.dotnet/tools/atlas-ef",
   ]
   working_dir = "API"
 }
