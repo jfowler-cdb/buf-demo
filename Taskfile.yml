@@ -72,6 +72,7 @@ tasks:
   demo:step1:
     desc: "Step 1: Define the schema"
     cmds:
+      - task: demo:reset
       - git checkout demo/step-1-proto
       - echo ""
       - echo "━━━ tracks.proto ━━━"
@@ -83,6 +84,7 @@ tasks:
   demo:step2:
     desc: "Step 2: Generate code"
     cmds:
+      - task: demo:step1
       - git checkout demo/step-2-generate
       - buf generate
       - echo ""
@@ -92,6 +94,7 @@ tasks:
   demo:step3:
     desc: "Step 3: Backend — build, migrate, seed, test"
     cmds:
+      - task: demo:step2
       - git checkout demo/step-3-backend
       - dotnet build API
       - atlas migrate diff add_tracks --env local
@@ -107,6 +110,7 @@ tasks:
   demo:step4:
     desc: "Step 4: Client — build and run"
     cmds:
+      - task: demo:step3
       - git checkout demo/step-4-client
       - cd client && npm run build
       - echo ""
@@ -115,6 +119,7 @@ tasks:
   demo:break-proto:
     desc: "Break demo: renamed proto field"
     cmds:
+      - task: demo:step1
       - git checkout demo/break-proto
       - echo ""
       - echo "━━━ The change ━━━"
@@ -127,6 +132,7 @@ tasks:
   demo:break-mapper:
     desc: "Break demo: proto/entity drift"
     cmds:
+      - task: demo:step3
       - git checkout demo/break-mapper
       - echo ""
       - echo "━━━ dotnet build result ━━━"
