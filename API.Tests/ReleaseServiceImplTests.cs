@@ -37,49 +37,42 @@ public class ReleaseServiceImplTests : IDisposable
         _connection.Dispose();
     }
 
-    private static Release MakeRelease(string id = "r1", string title = "Album", string artist = "Artist") =>
+    private static Release MakeRelease(string title = "Album", string artist = "Artist") =>
         new()
         {
-            Id = id,
             Title = title,
             Artist = artist,
             Label = "Label",
             ReleaseDate = Timestamp.FromDateTime(DateTime.UtcNow)
         };
 
+    private async Task<Release> CreateAndReturn(string title = "Album", string artist = "Artist")
+    {
+        var resp = await _sut.CreateRelease(
+            new CreateReleaseRequest { Release = MakeRelease(title, artist) }, _ctx);
+        return resp.Release;
+    }
+
     // ── CreateRelease ──────────────────────────────────────────
 
     [Fact]
-    public async Task CreateRelease_AssignsId_WhenEmpty()
+    public async Task CreateRelease_AssignsUuid()
     {
-        var req = new CreateReleaseRequest { Release = MakeRelease(id: "") };
+        var created = await CreateAndReturn();
 
-        var resp = await _sut.CreateRelease(req, _ctx);
-
-        Assert.NotEmpty(resp.Release.Id);
-        Assert.Equal("Album", resp.Release.Title);
+        Assert.True(Guid.TryParse(created.Id, out _));
+        Assert.Equal("Album", created.Title);
+        Assert.NotNull(created.CreateTime);
+        Assert.NotNull(created.UpdateTime);
     }
 
     [Fact]
-    public async Task CreateRelease_PreservesId_WhenProvided()
+    public async Task CreateRelease_GeneratesUniqueIds()
     {
-        var req = new CreateReleaseRequest { Release = MakeRelease(id: "custom-id") };
+        var a = await CreateAndReturn("A");
+        var b = await CreateAndReturn("B");
 
-        var resp = await _sut.CreateRelease(req, _ctx);
-
-        Assert.Equal("custom-id", resp.Release.Id);
-    }
-
-    [Fact]
-    public async Task CreateRelease_ThrowsAlreadyExists_OnDuplicate()
-    {
-        var release = MakeRelease();
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = release }, _ctx);
-
-        var ex = await Assert.ThrowsAsync<RpcException>(() =>
-            _sut.CreateRelease(new CreateReleaseRequest { Release = release }, _ctx));
-
-        Assert.Equal(StatusCode.AlreadyExists, ex.StatusCode);
+        Assert.NotEqual(a.Id, b.Id);
     }
 
     // ── GetRelease ─────────────────────────────────────────────
@@ -87,12 +80,11 @@ public class ReleaseServiceImplTests : IDisposable
     [Fact]
     public async Task GetRelease_ReturnsRelease_WhenExists()
     {
-        var release = MakeRelease();
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = release }, _ctx);
+        var created = await CreateAndReturn();
 
-        var resp = await _sut.GetRelease(new GetReleaseRequest { Id = "r1" }, _ctx);
+        var resp = await _sut.GetRelease(new GetReleaseRequest { Id = created.Id }, _ctx);
 
-        Assert.Equal("r1", resp.Release.Id);
+        Assert.Equal(created.Id, resp.Release.Id);
         Assert.Equal("Album", resp.Release.Title);
     }
 
@@ -100,7 +92,7 @@ public class ReleaseServiceImplTests : IDisposable
     public async Task GetRelease_ThrowsNotFound_WhenMissing()
     {
         var ex = await Assert.ThrowsAsync<RpcException>(() =>
-            _sut.GetRelease(new GetReleaseRequest { Id = "missing" }, _ctx));
+            _sut.GetRelease(new GetReleaseRequest { Id = Guid.NewGuid().ToString() }, _ctx));
 
         Assert.Equal(StatusCode.NotFound, ex.StatusCode);
     }
@@ -119,8 +111,8 @@ public class ReleaseServiceImplTests : IDisposable
     [Fact]
     public async Task ListReleases_ReturnsAll_WhenWithinPageSize()
     {
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = MakeRelease("1", "B") }, _ctx);
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = MakeRelease("2", "A") }, _ctx);
+        await CreateAndReturn("B");
+        await CreateAndReturn("A");
 
         var resp = await _sut.ListReleases(new ListReleasesRequest { PageSize = 10 }, _ctx);
 
@@ -133,7 +125,7 @@ public class ReleaseServiceImplTests : IDisposable
     public async Task ListReleases_Paginates_WhenMoreThanPageSize()
     {
         for (int i = 0; i < 3; i++)
-            await _sut.CreateRelease(new CreateReleaseRequest { Release = MakeRelease($"r{i}", $"T{i}") }, _ctx);
+            await CreateAndReturn($"T{i}");
 
         var page1 = await _sut.ListReleases(new ListReleasesRequest { PageSize = 2 }, _ctx);
         Assert.Equal(2, page1.Releases.Count);
@@ -149,23 +141,26 @@ public class ReleaseServiceImplTests : IDisposable
     [Fact]
     public async Task UpdateRelease_UpdatesFields()
     {
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = MakeRelease() }, _ctx);
+        var created = await CreateAndReturn();
 
         var updated = MakeRelease();
+        updated.Id = created.Id;
         updated.Title = "Updated Title";
         var resp = await _sut.UpdateRelease(new UpdateReleaseRequest { Release = updated }, _ctx);
 
         Assert.Equal("Updated Title", resp.Release.Title);
 
-        var fetched = await _sut.GetRelease(new GetReleaseRequest { Id = "r1" }, _ctx);
+        var fetched = await _sut.GetRelease(new GetReleaseRequest { Id = created.Id }, _ctx);
         Assert.Equal("Updated Title", fetched.Release.Title);
     }
 
     [Fact]
     public async Task UpdateRelease_ThrowsNotFound_WhenMissing()
     {
+        var release = MakeRelease();
+        release.Id = Guid.NewGuid().ToString();
         var ex = await Assert.ThrowsAsync<RpcException>(() =>
-            _sut.UpdateRelease(new UpdateReleaseRequest { Release = MakeRelease("missing") }, _ctx));
+            _sut.UpdateRelease(new UpdateReleaseRequest { Release = release }, _ctx));
 
         Assert.Equal(StatusCode.NotFound, ex.StatusCode);
     }
@@ -175,13 +170,13 @@ public class ReleaseServiceImplTests : IDisposable
     [Fact]
     public async Task DeleteRelease_RemovesAndReturnsRelease()
     {
-        await _sut.CreateRelease(new CreateReleaseRequest { Release = MakeRelease() }, _ctx);
+        var created = await CreateAndReturn();
 
-        var resp = await _sut.DeleteRelease(new DeleteReleaseRequest { Id = "r1" }, _ctx);
-        Assert.Equal("r1", resp.Release.Id);
+        var resp = await _sut.DeleteRelease(new DeleteReleaseRequest { Id = created.Id }, _ctx);
+        Assert.Equal(created.Id, resp.Release.Id);
 
         var ex = await Assert.ThrowsAsync<RpcException>(() =>
-            _sut.GetRelease(new GetReleaseRequest { Id = "r1" }, _ctx));
+            _sut.GetRelease(new GetReleaseRequest { Id = created.Id }, _ctx));
         Assert.Equal(StatusCode.NotFound, ex.StatusCode);
     }
 
@@ -189,7 +184,7 @@ public class ReleaseServiceImplTests : IDisposable
     public async Task DeleteRelease_ThrowsNotFound_WhenMissing()
     {
         var ex = await Assert.ThrowsAsync<RpcException>(() =>
-            _sut.DeleteRelease(new DeleteReleaseRequest { Id = "missing" }, _ctx));
+            _sut.DeleteRelease(new DeleteReleaseRequest { Id = Guid.NewGuid().ToString() }, _ctx));
 
         Assert.Equal(StatusCode.NotFound, ex.StatusCode);
     }

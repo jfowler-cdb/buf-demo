@@ -32,6 +32,7 @@ public static class Seeder
             if (existing.Contains(naturalKey))
                 continue;
 
+            var now = DateTime.UtcNow;
             toInsert.Add(new ReleaseEntity
             {
                 Id = Guid.NewGuid().ToString(),
@@ -39,6 +40,8 @@ public static class Seeder
                 Artist = r.Artist,
                 Label = r.Label ?? string.Empty,
                 ReleaseDate = DateTime.SpecifyKind(DateTime.Parse(r.ReleaseDate), DateTimeKind.Utc),
+                CreatedAt = now,
+                UpdatedAt = now,
             });
         }
 

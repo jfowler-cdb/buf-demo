@@ -51,11 +51,9 @@ public class ReleaseServiceImpl : ReleaseService.ReleaseServiceBase
     public override async Task<CreateReleaseResponse> CreateRelease(CreateReleaseRequest request, ServerCallContext context)
     {
         var entity = ReleaseMapper.ToEntity(request.Release);
-        if (string.IsNullOrEmpty(entity.Id))
-            entity.Id = Guid.NewGuid().ToString();
-
-        if (await _db.Releases.AnyAsync(r => r.Id == entity.Id))
-            throw new RpcException(new Status(StatusCode.AlreadyExists, $"Release '{entity.Id}' already exists."));
+        entity.Id = Guid.NewGuid().ToString();
+        entity.CreatedAt = DateTime.UtcNow;
+        entity.UpdatedAt = DateTime.UtcNow;
 
         _db.Releases.Add(entity);
         await _db.SaveChangesAsync();
@@ -75,6 +73,7 @@ public class ReleaseServiceImpl : ReleaseService.ReleaseServiceBase
         existing.Artist = entity.Artist;
         existing.Label = entity.Label;
         existing.ReleaseDate = entity.ReleaseDate;
+        existing.UpdatedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return new UpdateReleaseResponse { Release = ReleaseMapper.ToProto(existing) };

@@ -16,6 +16,8 @@ export declare const file_cdbaby_demo_v1beta1_releases: GenFile;
  */
 export declare type Release = Message<"cdbaby.demo.v1beta1.Release"> & {
   /**
+   * Output only.
+   *
    * @generated from field: string id = 1;
    */
   id: string;
@@ -39,6 +41,20 @@ export declare type Release = Message<"cdbaby.demo.v1beta1.Release"> & {
    * @generated from field: google.protobuf.Timestamp release_date = 5;
    */
   releaseDate?: Timestamp | undefined;
+
+  /**
+   * Output only.
+   *
+   * @generated from field: google.protobuf.Timestamp create_time = 6;
+   */
+  createTime?: Timestamp | undefined;
+
+  /**
+   * Output only.
+   *
+   * @generated from field: google.protobuf.Timestamp update_time = 7;
+   */
+  updateTime?: Timestamp | undefined;
 };
 
 /**

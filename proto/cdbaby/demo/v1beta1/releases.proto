@@ -14,15 +14,23 @@ service ReleaseService {
 }
 
 message Release {
-  string id = 1;
+  // Output only.
+  string id = 1 [(buf.validate.field) = {
+    ignore: IGNORE_IF_ZERO_VALUE
+    string: {uuid: true}
+  }];
   string title = 2 [(buf.validate.field).string.min_len = 1];
   string artist = 3 [(buf.validate.field).string.min_len = 1];
   string label = 4;
   google.protobuf.Timestamp release_date = 5 [(buf.validate.field).required = true];
+  // Output only.
+  google.protobuf.Timestamp create_time = 6 [(buf.validate.field).ignore = IGNORE_ALWAYS];
+  // Output only.
+  google.protobuf.Timestamp update_time = 7 [(buf.validate.field).ignore = IGNORE_ALWAYS];
 }
 
 message GetReleaseRequest {
-  string id = 1 [(buf.validate.field).string.min_len = 1];
+  string id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message GetReleaseResponse {
@@ -59,7 +67,7 @@ message UpdateReleaseResponse {
 }
 
 message DeleteReleaseRequest {
-  string id = 1 [(buf.validate.field).string.min_len = 1];
+  string id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message DeleteReleaseResponse {

@@ -1,0 +1,11 @@
+# .NET
+bin/
+obj/
+*.db
+
+# Node
+node_modules/
+.next/
+
+# OS
+.DS_Store

@@ -7,4 +7,6 @@ public class ReleaseEntity
     public string Artist { get; set; } = string.Empty;
     public string Label { get; set; } = string.Empty;
     public DateTime ReleaseDate { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
 }

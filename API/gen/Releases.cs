@@ -26,48 +26,52 @@ namespace Cdbaby.Demo.V1beta1 {
           string.Concat(
             "CiJjZGJhYnkvZGVtby92MWJldGExL3JlbGVhc2VzLnByb3RvEhNjZGJhYnku",
             "ZGVtby52MWJldGExGhtidWYvdmFsaWRhdGUvdmFsaWRhdGUucHJvdG8aH2dv",
-            "b2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8itgEKB1JlbGVhc2USDgoC",
-            "aWQYASABKAlSAmlkEh0KBXRpdGxlGAIgASgJQge6SARyAhABUgV0aXRsZRIf",
-            "CgZhcnRpc3QYAyABKAlCB7pIBHICEAFSBmFydGlzdBIUCgVsYWJlbBgEIAEo",
-            "CVIFbGFiZWwSRQoMcmVsZWFzZV9kYXRlGAUgASgLMhouZ29vZ2xlLnByb3Rv",
-            "YnVmLlRpbWVzdGFtcEIGukgDyAEBUgtyZWxlYXNlRGF0ZSIsChFHZXRSZWxl",
-            "YXNlUmVxdWVzdBIXCgJpZBgBIAEoCUIHukgEcgIQAVICaWQiTAoSR2V0UmVs",
-            "ZWFzZVJlc3BvbnNlEjYKB3JlbGVhc2UYASABKAsyHC5jZGJhYnkuZGVtby52",
-            "MWJldGExLlJlbGVhc2VSB3JlbGVhc2UiXAoTTGlzdFJlbGVhc2VzUmVxdWVz",
-            "dBImCglwYWdlX3NpemUYASABKAVCCbpIBhoEGGQoAFIIcGFnZVNpemUSHQoK",
-            "cGFnZV90b2tlbhgCIAEoCVIJcGFnZVRva2VuIngKFExpc3RSZWxlYXNlc1Jl",
-            "c3BvbnNlEjgKCHJlbGVhc2VzGAEgAygLMhwuY2RiYWJ5LmRlbW8udjFiZXRh",
-            "MS5SZWxlYXNlUghyZWxlYXNlcxImCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAlS",
-            "DW5leHRQYWdlVG9rZW4iVgoUQ3JlYXRlUmVsZWFzZVJlcXVlc3QSPgoHcmVs",
-            "ZWFzZRgBIAEoCzIcLmNkYmFieS5kZW1vLnYxYmV0YTEuUmVsZWFzZUIGukgD",
-            "yAEBUgdyZWxlYXNlIk8KFUNyZWF0ZVJlbGVhc2VSZXNwb25zZRI2CgdyZWxl",
-            "YXNlGAEgASgLMhwuY2RiYWJ5LmRlbW8udjFiZXRhMS5SZWxlYXNlUgdyZWxl",
-            "YXNlIlYKFFVwZGF0ZVJlbGVhc2VSZXF1ZXN0Ej4KB3JlbGVhc2UYASABKAsy",
-            "HC5jZGJhYnkuZGVtby52MWJldGExLlJlbGVhc2VCBrpIA8gBAVIHcmVsZWFz",
-            "ZSJPChVVcGRhdGVSZWxlYXNlUmVzcG9uc2USNgoHcmVsZWFzZRgBIAEoCzIc",
-            "LmNkYmFieS5kZW1vLnYxYmV0YTEuUmVsZWFzZVIHcmVsZWFzZSIvChREZWxl",
-            "dGVSZWxlYXNlUmVxdWVzdBIXCgJpZBgBIAEoCUIHukgEcgIQAVICaWQiTwoV",
-            "RGVsZXRlUmVsZWFzZVJlc3BvbnNlEjYKB3JlbGVhc2UYASABKAsyHC5jZGJh",
-            "YnkuZGVtby52MWJldGExLlJlbGVhc2VSB3JlbGVhc2UyjAQKDlJlbGVhc2VT",
-            "ZXJ2aWNlEl0KCkdldFJlbGVhc2USJi5jZGJhYnkuZGVtby52MWJldGExLkdl",
-            "dFJlbGVhc2VSZXF1ZXN0GicuY2RiYWJ5LmRlbW8udjFiZXRhMS5HZXRSZWxl",
-            "YXNlUmVzcG9uc2USYwoMTGlzdFJlbGVhc2VzEiguY2RiYWJ5LmRlbW8udjFi",
-            "ZXRhMS5MaXN0UmVsZWFzZXNSZXF1ZXN0GikuY2RiYWJ5LmRlbW8udjFiZXRh",
-            "MS5MaXN0UmVsZWFzZXNSZXNwb25zZRJmCg1DcmVhdGVSZWxlYXNlEikuY2Ri",
-            "YWJ5LmRlbW8udjFiZXRhMS5DcmVhdGVSZWxlYXNlUmVxdWVzdBoqLmNkYmFi",
-            "eS5kZW1vLnYxYmV0YTEuQ3JlYXRlUmVsZWFzZVJlc3BvbnNlEmYKDVVwZGF0",
-            "ZVJlbGVhc2USKS5jZGJhYnkuZGVtby52MWJldGExLlVwZGF0ZVJlbGVhc2VS",
-            "ZXF1ZXN0GiouY2RiYWJ5LmRlbW8udjFiZXRhMS5VcGRhdGVSZWxlYXNlUmVz",
-            "cG9uc2USZgoNRGVsZXRlUmVsZWFzZRIpLmNkYmFieS5kZW1vLnYxYmV0YTEu",
-            "RGVsZXRlUmVsZWFzZVJlcXVlc3QaKi5jZGJhYnkuZGVtby52MWJldGExLkRl",
-            "bGV0ZVJlbGVhc2VSZXNwb25zZUKWAQoXY29tLmNkYmFieS5kZW1vLnYxYmV0",
-            "YTFCDVJlbGVhc2VzUHJvdG9QAaICA0NEWKoCE0NkYmFieS5EZW1vLlYxYmV0",
-            "YTHKAhNDZGJhYnlcRGVtb1xWMWJldGEx4gIfQ2RiYWJ5XERlbW9cVjFiZXRh",
-            "MVxHUEJNZXRhZGF0YeoCFUNkYmFieTo6RGVtbzo6VjFiZXRhMWIGcHJvdG8z"));
+            "b2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8izQIKB1JlbGVhc2USGwoC",
+            "aWQYASABKAlCC7pICHIDsAEB2AEBUgJpZBIdCgV0aXRsZRgCIAEoCUIHukgE",
+            "cgIQAVIFdGl0bGUSHwoGYXJ0aXN0GAMgASgJQge6SARyAhABUgZhcnRpc3QS",
+            "FAoFbGFiZWwYBCABKAlSBWxhYmVsEkUKDHJlbGVhc2VfZGF0ZRgFIAEoCzIa",
+            "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBAVILcmVsZWFzZURh",
+            "dGUSQwoLY3JlYXRlX3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGlt",
+            "ZXN0YW1wQga6SAPYAQNSCmNyZWF0ZVRpbWUSQwoLdXBkYXRlX3RpbWUYByAB",
+            "KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPYAQNSCnVwZGF0",
+            "ZVRpbWUiLQoRR2V0UmVsZWFzZVJlcXVlc3QSGAoCaWQYASABKAlCCLpIBXID",
+            "sAEBUgJpZCJMChJHZXRSZWxlYXNlUmVzcG9uc2USNgoHcmVsZWFzZRgBIAEo",
+            "CzIcLmNkYmFieS5kZW1vLnYxYmV0YTEuUmVsZWFzZVIHcmVsZWFzZSJcChNM",
+            "aXN0UmVsZWFzZXNSZXF1ZXN0EiYKCXBhZ2Vfc2l6ZRgBIAEoBUIJukgGGgQY",
+            "ZCgAUghwYWdlU2l6ZRIdCgpwYWdlX3Rva2VuGAIgASgJUglwYWdlVG9rZW4i",
+            "eAoUTGlzdFJlbGVhc2VzUmVzcG9uc2USOAoIcmVsZWFzZXMYASADKAsyHC5j",
+            "ZGJhYnkuZGVtby52MWJldGExLlJlbGVhc2VSCHJlbGVhc2VzEiYKD25leHRf",
+            "cGFnZV90b2tlbhgCIAEoCVINbmV4dFBhZ2VUb2tlbiJWChRDcmVhdGVSZWxl",
+            "YXNlUmVxdWVzdBI+CgdyZWxlYXNlGAEgASgLMhwuY2RiYWJ5LmRlbW8udjFi",
+            "ZXRhMS5SZWxlYXNlQga6SAPIAQFSB3JlbGVhc2UiTwoVQ3JlYXRlUmVsZWFz",
+            "ZVJlc3BvbnNlEjYKB3JlbGVhc2UYASABKAsyHC5jZGJhYnkuZGVtby52MWJl",
+            "dGExLlJlbGVhc2VSB3JlbGVhc2UiVgoUVXBkYXRlUmVsZWFzZVJlcXVlc3QS",
+            "PgoHcmVsZWFzZRgBIAEoCzIcLmNkYmFieS5kZW1vLnYxYmV0YTEuUmVsZWFz",
+            "ZUIGukgDyAEBUgdyZWxlYXNlIk8KFVVwZGF0ZVJlbGVhc2VSZXNwb25zZRI2",
+            "CgdyZWxlYXNlGAEgASgLMhwuY2RiYWJ5LmRlbW8udjFiZXRhMS5SZWxlYXNl",
+            "UgdyZWxlYXNlIjAKFERlbGV0ZVJlbGVhc2VSZXF1ZXN0EhgKAmlkGAEgASgJ",
+            "Qgi6SAVyA7ABAVICaWQiTwoVRGVsZXRlUmVsZWFzZVJlc3BvbnNlEjYKB3Jl",
+            "bGVhc2UYASABKAsyHC5jZGJhYnkuZGVtby52MWJldGExLlJlbGVhc2VSB3Jl",
+            "bGVhc2UyjAQKDlJlbGVhc2VTZXJ2aWNlEl0KCkdldFJlbGVhc2USJi5jZGJh",
+            "YnkuZGVtby52MWJldGExLkdldFJlbGVhc2VSZXF1ZXN0GicuY2RiYWJ5LmRl",
+            "bW8udjFiZXRhMS5HZXRSZWxlYXNlUmVzcG9uc2USYwoMTGlzdFJlbGVhc2Vz",
+            "EiguY2RiYWJ5LmRlbW8udjFiZXRhMS5MaXN0UmVsZWFzZXNSZXF1ZXN0Giku",
+            "Y2RiYWJ5LmRlbW8udjFiZXRhMS5MaXN0UmVsZWFzZXNSZXNwb25zZRJmCg1D",
+            "cmVhdGVSZWxlYXNlEikuY2RiYWJ5LmRlbW8udjFiZXRhMS5DcmVhdGVSZWxl",
+            "YXNlUmVxdWVzdBoqLmNkYmFieS5kZW1vLnYxYmV0YTEuQ3JlYXRlUmVsZWFz",
+            "ZVJlc3BvbnNlEmYKDVVwZGF0ZVJlbGVhc2USKS5jZGJhYnkuZGVtby52MWJl",
+            "dGExLlVwZGF0ZVJlbGVhc2VSZXF1ZXN0GiouY2RiYWJ5LmRlbW8udjFiZXRh",
+            "MS5VcGRhdGVSZWxlYXNlUmVzcG9uc2USZgoNRGVsZXRlUmVsZWFzZRIpLmNk",
+            "YmFieS5kZW1vLnYxYmV0YTEuRGVsZXRlUmVsZWFzZVJlcXVlc3QaKi5jZGJh",
+            "YnkuZGVtby52MWJldGExLkRlbGV0ZVJlbGVhc2VSZXNwb25zZUKWAQoXY29t",
+            "LmNkYmFieS5kZW1vLnYxYmV0YTFCDVJlbGVhc2VzUHJvdG9QAaICA0NEWKoC",
+            "E0NkYmFieS5EZW1vLlYxYmV0YTHKAhNDZGJhYnlcRGVtb1xWMWJldGEx4gIf",
+            "Q2RiYWJ5XERlbW9cVjFiZXRhMVxHUEJNZXRhZGF0YeoCFUNkYmFieTo6RGVt",
+            "bzo6VjFiZXRhMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Buf.Validate.ValidateReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.Release), global::Cdbaby.Demo.V1beta1.Release.Parser, new[]{ "Id", "Title", "Artist", "Label", "ReleaseDate" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.Release), global::Cdbaby.Demo.V1beta1.Release.Parser, new[]{ "Id", "Title", "Artist", "Label", "ReleaseDate", "CreateTime", "UpdateTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.GetReleaseRequest), global::Cdbaby.Demo.V1beta1.GetReleaseRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.GetReleaseResponse), global::Cdbaby.Demo.V1beta1.GetReleaseResponse.Parser, new[]{ "Release" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.ListReleasesRequest), global::Cdbaby.Demo.V1beta1.ListReleasesRequest.Parser, new[]{ "PageSize", "PageToken" }, null, null, null, null),
@@ -124,6 +128,8 @@ namespace Cdbaby.Demo.V1beta1 {
       artist_ = other.artist_;
       label_ = other.label_;
       releaseDate_ = other.releaseDate_ != null ? other.releaseDate_.Clone() : null;
+      createTime_ = other.createTime_ != null ? other.createTime_.Clone() : null;
+      updateTime_ = other.updateTime_ != null ? other.updateTime_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -136,6 +142,9 @@ namespace Cdbaby.Demo.V1beta1 {
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private string id_ = "";
+    /// <summary>
+    /// Output only.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Id {
@@ -193,6 +202,36 @@ namespace Cdbaby.Demo.V1beta1 {
       }
     }
 
+    /// <summary>Field number for the "create_time" field.</summary>
+    public const int CreateTimeFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp createTime_;
+    /// <summary>
+    /// Output only.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp CreateTime {
+      get { return createTime_; }
+      set {
+        createTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "update_time" field.</summary>
+    public const int UpdateTimeFieldNumber = 7;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp updateTime_;
+    /// <summary>
+    /// Output only.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp UpdateTime {
+      get { return updateTime_; }
+      set {
+        updateTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -213,6 +252,8 @@ namespace Cdbaby.Demo.V1beta1 {
       if (Artist != other.Artist) return false;
       if (Label != other.Label) return false;
       if (!object.Equals(ReleaseDate, other.ReleaseDate)) return false;
+      if (!object.Equals(CreateTime, other.CreateTime)) return false;
+      if (!object.Equals(UpdateTime, other.UpdateTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -225,6 +266,8 @@ namespace Cdbaby.Demo.V1beta1 {
       if (Artist.Length != 0) hash ^= Artist.GetHashCode();
       if (Label.Length != 0) hash ^= Label.GetHashCode();
       if (releaseDate_ != null) hash ^= ReleaseDate.GetHashCode();
+      if (createTime_ != null) hash ^= CreateTime.GetHashCode();
+      if (updateTime_ != null) hash ^= UpdateTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -263,6 +306,14 @@ namespace Cdbaby.Demo.V1beta1 {
         output.WriteRawTag(42);
         output.WriteMessage(ReleaseDate);
       }
+      if (createTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(UpdateTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -293,6 +344,14 @@ namespace Cdbaby.Demo.V1beta1 {
         output.WriteRawTag(42);
         output.WriteMessage(ReleaseDate);
       }
+      if (createTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(UpdateTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -317,6 +376,12 @@ namespace Cdbaby.Demo.V1beta1 {
       }
       if (releaseDate_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReleaseDate);
+      }
+      if (createTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreateTime);
+      }
+      if (updateTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpdateTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -347,6 +412,18 @@ namespace Cdbaby.Demo.V1beta1 {
           ReleaseDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         ReleaseDate.MergeFrom(other.ReleaseDate);
+      }
+      if (other.createTime_ != null) {
+        if (createTime_ == null) {
+          CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        CreateTime.MergeFrom(other.CreateTime);
+      }
+      if (other.updateTime_ != null) {
+        if (updateTime_ == null) {
+          UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        UpdateTime.MergeFrom(other.UpdateTime);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -390,6 +467,20 @@ namespace Cdbaby.Demo.V1beta1 {
             input.ReadMessage(ReleaseDate);
             break;
           }
+          case 50: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 58: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
         }
       }
     #endif
@@ -430,6 +521,20 @@ namespace Cdbaby.Demo.V1beta1 {
               ReleaseDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(ReleaseDate);
+            break;
+          }
+          case 50: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 58: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
             break;
           }
         }
