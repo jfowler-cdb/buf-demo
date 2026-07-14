@@ -2,6 +2,12 @@
 
 version: '3'
 
+vars:
+  DOTNET_TOOLS: "{{.HOME}}/.dotnet/tools"
+
+env:
+  PATH: "{{.DOTNET_TOOLS}}:{{.PATH}}"
+
 tasks:
   generate:
     desc: Generate Protobuf code using Buf
@@ -51,3 +57,78 @@ tasks:
     cmds:
       - atlas migrate apply --env local
     silent: true
+
+  # ── Demo tasks ─────────────────────────────────────────────
+
+  demo:reset:
+    desc: Reset to main with a clean database
+    cmds:
+      - git checkout main
+      - rm -f API/releases.db
+      - task migrate:apply
+      - task seed
+    silent: true
+
+  demo:step1:
+    desc: "Step 1: Define the schema"
+    cmds:
+      - git checkout demo/step-1-proto
+      - echo ""
+      - echo "━━━ tracks.proto ━━━"
+      - sed -n '17,40p' proto/cdbaby/demo/v1beta1/tracks.proto
+      - echo ""
+      - buf lint && echo "✓ buf lint passed"
+      - buf breaking --against '.git#branch=main' && echo "✓ buf breaking passed (additive only)"
+
+  demo:step2:
+    desc: "Step 2: Generate code"
+    cmds:
+      - git checkout demo/step-2-generate
+      - buf generate
+      - echo ""
+      - echo "━━━ Generated files ━━━"
+      - git diff demo/step-1-proto..demo/step-2-generate --stat
+
+  demo:step3:
+    desc: "Step 3: Backend — build, migrate, seed, test"
+    cmds:
+      - git checkout demo/step-3-backend
+      - dotnet build API
+      - atlas migrate diff add_tracks --env local
+      - echo ""
+      - echo "━━━ Generated migration ━━━"
+      - cat migrations/*add_tracks*
+      - echo ""
+      - rm -f API/releases.db
+      - atlas migrate apply --env local
+      - dotnet run --project API -- seed
+      - dotnet run --project API.Tests
+
+  demo:step4:
+    desc: "Step 4: Client — build and run"
+    cmds:
+      - git checkout demo/step-4-client
+      - cd client && npm run build
+      - echo ""
+      - echo "✓ Ready — run 'task run' to start both apps"
+
+  demo:break-proto:
+    desc: "Break demo: renamed proto field"
+    cmds:
+      - git checkout demo/break-proto
+      - echo ""
+      - echo "━━━ The change ━━━"
+      - git diff demo/step-1-proto..demo/break-proto -- '*.proto'
+      - echo ""
+      - echo "━━━ buf breaking result ━━━"
+      - cmd: buf breaking --against '.git#branch=demo/step-1-proto'
+        ignore_error: true
+
+  demo:break-mapper:
+    desc: "Break demo: proto/entity drift"
+    cmds:
+      - git checkout demo/break-mapper
+      - echo ""
+      - echo "━━━ dotnet build result ━━━"
+      - cmd: dotnet build API 2>&1 | grep 'error RMG'
+        ignore_error: true
