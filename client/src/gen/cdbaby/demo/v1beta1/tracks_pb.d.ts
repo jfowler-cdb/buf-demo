@@ -48,6 +48,11 @@ export declare type Track = Message<"cdbaby.demo.v1beta1.Track"> & {
   isrc: string;
 
   /**
+   * @generated from field: string genre = 10;
+   */
+  genre: string;
+
+  /**
    * IDs of releases this track appears on.
    *
    * @generated from field: repeated string release_ids = 7;

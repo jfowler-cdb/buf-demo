@@ -27,52 +27,53 @@ namespace Cdbaby.Demo.V1beta1 {
             "CiBjZGJhYnkvZGVtby92MWJldGExL3RyYWNrcy5wcm90bxITY2RiYWJ5LmRl",
             "bW8udjFiZXRhMRobYnVmL3ZhbGlkYXRlL3ZhbGlkYXRlLnByb3RvGh5nb29n",
             "bGUvcHJvdG9idWYvZHVyYXRpb24ucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90",
-            "aW1lc3RhbXAucHJvdG8itwMKBVRyYWNrEhsKAmlkGAEgASgJQgu6SAhyA7AB",
+            "aW1lc3RhbXAucHJvdG8i1gMKBVRyYWNrEhsKAmlkGAEgASgJQgu6SAhyA7AB",
             "AdgBAVICaWQSHQoFdGl0bGUYAiABKAlCB7pIBHICEAFSBXRpdGxlEh8KBmFy",
             "dGlzdBgDIAEoCUIHukgEcgIQAVIGYXJ0aXN0Ej0KCGR1cmF0aW9uGAQgASgL",
             "MhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQga6SAPIAQFSCGR1cmF0aW9u",
             "EioKDHRyYWNrX251bWJlchgFIAEoBUIHukgEGgIoAVILdHJhY2tOdW1iZXIS",
             "OwoEaXNyYxgGIAEoCUInukgkciIyIF4oW0EtWl17Mn1bQS1aMC05XXszfVsw",
-            "LTldezd9KT8kUgRpc3JjEh8KC3JlbGVhc2VfaWRzGAcgAygJUgpyZWxlYXNl",
-            "SWRzEkMKC2NyZWF0ZV90aW1lGAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp",
-            "bWVzdGFtcEIGukgD2AEDUgpjcmVhdGVUaW1lEkMKC3VwZGF0ZV90aW1lGAkg",
-            "ASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgD2AEDUgp1cGRh",
-            "dGVUaW1lIisKD0dldFRyYWNrUmVxdWVzdBIYCgJpZBgBIAEoCUIIukgFcgOw",
-            "AQFSAmlkIkQKEEdldFRyYWNrUmVzcG9uc2USMAoFdHJhY2sYASABKAsyGi5j",
-            "ZGJhYnkuZGVtby52MWJldGExLlRyYWNrUgV0cmFjayJ5ChFMaXN0VHJhY2tz",
-            "UmVxdWVzdBImCglwYWdlX3NpemUYASABKAVCCbpIBhoEGGQoAFIIcGFnZVNp",
-            "emUSHQoKcGFnZV90b2tlbhgCIAEoCVIJcGFnZVRva2VuEh0KCnJlbGVhc2Vf",
-            "aWQYAyABKAlSCXJlbGVhc2VJZCJwChJMaXN0VHJhY2tzUmVzcG9uc2USMgoG",
-            "dHJhY2tzGAEgAygLMhouY2RiYWJ5LmRlbW8udjFiZXRhMS5UcmFja1IGdHJh",
-            "Y2tzEiYKD25leHRfcGFnZV90b2tlbhgCIAEoCVINbmV4dFBhZ2VUb2tlbiJO",
-            "ChJDcmVhdGVUcmFja1JlcXVlc3QSOAoFdHJhY2sYASABKAsyGi5jZGJhYnku",
-            "ZGVtby52MWJldGExLlRyYWNrQga6SAPIAQFSBXRyYWNrIkcKE0NyZWF0ZVRy",
-            "YWNrUmVzcG9uc2USMAoFdHJhY2sYASABKAsyGi5jZGJhYnkuZGVtby52MWJl",
-            "dGExLlRyYWNrUgV0cmFjayJOChJVcGRhdGVUcmFja1JlcXVlc3QSOAoFdHJh",
-            "Y2sYASABKAsyGi5jZGJhYnkuZGVtby52MWJldGExLlRyYWNrQga6SAPIAQFS",
-            "BXRyYWNrIkcKE1VwZGF0ZVRyYWNrUmVzcG9uc2USMAoFdHJhY2sYASABKAsy",
-            "Gi5jZGJhYnkuZGVtby52MWJldGExLlRyYWNrUgV0cmFjayIuChJEZWxldGVU",
-            "cmFja1JlcXVlc3QSGAoCaWQYASABKAlCCLpIBXIDsAEBUgJpZCJHChNEZWxl",
+            "LTldezd9KT8kUgRpc3JjEh0KBWdlbnJlGAogASgJQge6SARyAhABUgVnZW5y",
+            "ZRIfCgtyZWxlYXNlX2lkcxgHIAMoCVIKcmVsZWFzZUlkcxJDCgtjcmVhdGVf",
+            "dGltZRgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA9gB",
+            "A1IKY3JlYXRlVGltZRJDCgt1cGRhdGVfdGltZRgJIAEoCzIaLmdvb2dsZS5w",
+            "cm90b2J1Zi5UaW1lc3RhbXBCBrpIA9gBA1IKdXBkYXRlVGltZSIrCg9HZXRU",
+            "cmFja1JlcXVlc3QSGAoCaWQYASABKAlCCLpIBXIDsAEBUgJpZCJEChBHZXRU",
+            "cmFja1Jlc3BvbnNlEjAKBXRyYWNrGAEgASgLMhouY2RiYWJ5LmRlbW8udjFi",
+            "ZXRhMS5UcmFja1IFdHJhY2sieQoRTGlzdFRyYWNrc1JlcXVlc3QSJgoJcGFn",
+            "ZV9zaXplGAEgASgFQgm6SAYaBBhkKABSCHBhZ2VTaXplEh0KCnBhZ2VfdG9r",
+            "ZW4YAiABKAlSCXBhZ2VUb2tlbhIdCgpyZWxlYXNlX2lkGAMgASgJUglyZWxl",
+            "YXNlSWQicAoSTGlzdFRyYWNrc1Jlc3BvbnNlEjIKBnRyYWNrcxgBIAMoCzIa",
+            "LmNkYmFieS5kZW1vLnYxYmV0YTEuVHJhY2tSBnRyYWNrcxImCg9uZXh0X3Bh",
+            "Z2VfdG9rZW4YAiABKAlSDW5leHRQYWdlVG9rZW4iTgoSQ3JlYXRlVHJhY2tS",
+            "ZXF1ZXN0EjgKBXRyYWNrGAEgASgLMhouY2RiYWJ5LmRlbW8udjFiZXRhMS5U",
+            "cmFja0IGukgDyAEBUgV0cmFjayJHChNDcmVhdGVUcmFja1Jlc3BvbnNlEjAK",
+            "BXRyYWNrGAEgASgLMhouY2RiYWJ5LmRlbW8udjFiZXRhMS5UcmFja1IFdHJh",
+            "Y2siTgoSVXBkYXRlVHJhY2tSZXF1ZXN0EjgKBXRyYWNrGAEgASgLMhouY2Ri",
+            "YWJ5LmRlbW8udjFiZXRhMS5UcmFja0IGukgDyAEBUgV0cmFjayJHChNVcGRh",
             "dGVUcmFja1Jlc3BvbnNlEjAKBXRyYWNrGAEgASgLMhouY2RiYWJ5LmRlbW8u",
-            "djFiZXRhMS5UcmFja1IFdHJhY2sy7AMKDFRyYWNrU2VydmljZRJXCghHZXRU",
-            "cmFjaxIkLmNkYmFieS5kZW1vLnYxYmV0YTEuR2V0VHJhY2tSZXF1ZXN0GiUu",
-            "Y2RiYWJ5LmRlbW8udjFiZXRhMS5HZXRUcmFja1Jlc3BvbnNlEl0KCkxpc3RU",
-            "cmFja3MSJi5jZGJhYnkuZGVtby52MWJldGExLkxpc3RUcmFja3NSZXF1ZXN0",
-            "GicuY2RiYWJ5LmRlbW8udjFiZXRhMS5MaXN0VHJhY2tzUmVzcG9uc2USYAoL",
-            "Q3JlYXRlVHJhY2sSJy5jZGJhYnkuZGVtby52MWJldGExLkNyZWF0ZVRyYWNr",
-            "UmVxdWVzdBooLmNkYmFieS5kZW1vLnYxYmV0YTEuQ3JlYXRlVHJhY2tSZXNw",
-            "b25zZRJgCgtVcGRhdGVUcmFjaxInLmNkYmFieS5kZW1vLnYxYmV0YTEuVXBk",
-            "YXRlVHJhY2tSZXF1ZXN0GiguY2RiYWJ5LmRlbW8udjFiZXRhMS5VcGRhdGVU",
-            "cmFja1Jlc3BvbnNlEmAKC0RlbGV0ZVRyYWNrEicuY2RiYWJ5LmRlbW8udjFi",
-            "ZXRhMS5EZWxldGVUcmFja1JlcXVlc3QaKC5jZGJhYnkuZGVtby52MWJldGEx",
-            "LkRlbGV0ZVRyYWNrUmVzcG9uc2VClAEKF2NvbS5jZGJhYnkuZGVtby52MWJl",
-            "dGExQgtUcmFja3NQcm90b1ABogIDQ0RYqgITQ2RiYWJ5LkRlbW8uVjFiZXRh",
-            "McoCE0NkYmFieVxEZW1vXFYxYmV0YTHiAh9DZGJhYnlcRGVtb1xWMWJldGEx",
-            "XEdQQk1ldGFkYXRh6gIVQ2RiYWJ5OjpEZW1vOjpWMWJldGExYgZwcm90bzM="));
+            "djFiZXRhMS5UcmFja1IFdHJhY2siLgoSRGVsZXRlVHJhY2tSZXF1ZXN0EhgK",
+            "AmlkGAEgASgJQgi6SAVyA7ABAVICaWQiRwoTRGVsZXRlVHJhY2tSZXNwb25z",
+            "ZRIwCgV0cmFjaxgBIAEoCzIaLmNkYmFieS5kZW1vLnYxYmV0YTEuVHJhY2tS",
+            "BXRyYWNrMuwDCgxUcmFja1NlcnZpY2USVwoIR2V0VHJhY2sSJC5jZGJhYnku",
+            "ZGVtby52MWJldGExLkdldFRyYWNrUmVxdWVzdBolLmNkYmFieS5kZW1vLnYx",
+            "YmV0YTEuR2V0VHJhY2tSZXNwb25zZRJdCgpMaXN0VHJhY2tzEiYuY2RiYWJ5",
+            "LmRlbW8udjFiZXRhMS5MaXN0VHJhY2tzUmVxdWVzdBonLmNkYmFieS5kZW1v",
+            "LnYxYmV0YTEuTGlzdFRyYWNrc1Jlc3BvbnNlEmAKC0NyZWF0ZVRyYWNrEicu",
+            "Y2RiYWJ5LmRlbW8udjFiZXRhMS5DcmVhdGVUcmFja1JlcXVlc3QaKC5jZGJh",
+            "YnkuZGVtby52MWJldGExLkNyZWF0ZVRyYWNrUmVzcG9uc2USYAoLVXBkYXRl",
+            "VHJhY2sSJy5jZGJhYnkuZGVtby52MWJldGExLlVwZGF0ZVRyYWNrUmVxdWVz",
+            "dBooLmNkYmFieS5kZW1vLnYxYmV0YTEuVXBkYXRlVHJhY2tSZXNwb25zZRJg",
+            "CgtEZWxldGVUcmFjaxInLmNkYmFieS5kZW1vLnYxYmV0YTEuRGVsZXRlVHJh",
+            "Y2tSZXF1ZXN0GiguY2RiYWJ5LmRlbW8udjFiZXRhMS5EZWxldGVUcmFja1Jl",
+            "c3BvbnNlQpQBChdjb20uY2RiYWJ5LmRlbW8udjFiZXRhMUILVHJhY2tzUHJv",
+            "dG9QAaICA0NEWKoCE0NkYmFieS5EZW1vLlYxYmV0YTHKAhNDZGJhYnlcRGVt",
+            "b1xWMWJldGEx4gIfQ2RiYWJ5XERlbW9cVjFiZXRhMVxHUEJNZXRhZGF0YeoC",
+            "FUNkYmFieTo6RGVtbzo6VjFiZXRhMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Buf.Validate.ValidateReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.Track), global::Cdbaby.Demo.V1beta1.Track.Parser, new[]{ "Id", "Title", "Artist", "Duration", "TrackNumber", "Isrc", "ReleaseIds", "CreateTime", "UpdateTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.Track), global::Cdbaby.Demo.V1beta1.Track.Parser, new[]{ "Id", "Title", "Artist", "Duration", "TrackNumber", "Isrc", "Genre", "ReleaseIds", "CreateTime", "UpdateTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.GetTrackRequest), global::Cdbaby.Demo.V1beta1.GetTrackRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.GetTrackResponse), global::Cdbaby.Demo.V1beta1.GetTrackResponse.Parser, new[]{ "Track" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Cdbaby.Demo.V1beta1.ListTracksRequest), global::Cdbaby.Demo.V1beta1.ListTracksRequest.Parser, new[]{ "PageSize", "PageToken", "ReleaseId" }, null, null, null, null),
@@ -130,6 +131,7 @@ namespace Cdbaby.Demo.V1beta1 {
       duration_ = other.duration_ != null ? other.duration_.Clone() : null;
       trackNumber_ = other.trackNumber_;
       isrc_ = other.isrc_;
+      genre_ = other.genre_;
       releaseIds_ = other.releaseIds_.Clone();
       createTime_ = other.createTime_ != null ? other.createTime_.Clone() : null;
       updateTime_ = other.updateTime_ != null ? other.updateTime_.Clone() : null;
@@ -217,6 +219,18 @@ namespace Cdbaby.Demo.V1beta1 {
       }
     }
 
+    /// <summary>Field number for the "genre" field.</summary>
+    public const int GenreFieldNumber = 10;
+    private string genre_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Genre {
+      get { return genre_; }
+      set {
+        genre_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "release_ids" field.</summary>
     public const int ReleaseIdsFieldNumber = 7;
     private static readonly pb::FieldCodec<string> _repeated_releaseIds_codec
@@ -282,6 +296,7 @@ namespace Cdbaby.Demo.V1beta1 {
       if (!object.Equals(Duration, other.Duration)) return false;
       if (TrackNumber != other.TrackNumber) return false;
       if (Isrc != other.Isrc) return false;
+      if (Genre != other.Genre) return false;
       if(!releaseIds_.Equals(other.releaseIds_)) return false;
       if (!object.Equals(CreateTime, other.CreateTime)) return false;
       if (!object.Equals(UpdateTime, other.UpdateTime)) return false;
@@ -298,6 +313,7 @@ namespace Cdbaby.Demo.V1beta1 {
       if (duration_ != null) hash ^= Duration.GetHashCode();
       if (TrackNumber != 0) hash ^= TrackNumber.GetHashCode();
       if (Isrc.Length != 0) hash ^= Isrc.GetHashCode();
+      if (Genre.Length != 0) hash ^= Genre.GetHashCode();
       hash ^= releaseIds_.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
       if (updateTime_ != null) hash ^= UpdateTime.GetHashCode();
@@ -352,6 +368,10 @@ namespace Cdbaby.Demo.V1beta1 {
         output.WriteRawTag(74);
         output.WriteMessage(UpdateTime);
       }
+      if (Genre.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Genre);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -395,6 +415,10 @@ namespace Cdbaby.Demo.V1beta1 {
         output.WriteRawTag(74);
         output.WriteMessage(UpdateTime);
       }
+      if (Genre.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Genre);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -422,6 +446,9 @@ namespace Cdbaby.Demo.V1beta1 {
       }
       if (Isrc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Isrc);
+      }
+      if (Genre.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Genre);
       }
       size += releaseIds_.CalculateSize(_repeated_releaseIds_codec);
       if (createTime_ != null) {
@@ -462,6 +489,9 @@ namespace Cdbaby.Demo.V1beta1 {
       }
       if (other.Isrc.Length != 0) {
         Isrc = other.Isrc;
+      }
+      if (other.Genre.Length != 0) {
+        Genre = other.Genre;
       }
       releaseIds_.Add(other.releaseIds_);
       if (other.createTime_ != null) {
@@ -540,6 +570,10 @@ namespace Cdbaby.Demo.V1beta1 {
             input.ReadMessage(UpdateTime);
             break;
           }
+          case 82: {
+            Genre = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -602,6 +636,10 @@ namespace Cdbaby.Demo.V1beta1 {
               UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(UpdateTime);
+            break;
+          }
+          case 82: {
+            Genre = input.ReadString();
             break;
           }
         }
