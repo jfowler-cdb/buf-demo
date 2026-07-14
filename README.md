@@ -6,12 +6,28 @@ This walkthrough demonstrates adding a **TrackService** end-to-end — from prot
 
 Each step is on its own branch. Between steps, examine the diff to see exactly what changed and where contracts are being enforced.
 
+### Define the schema
+
+![Step 1: Schema definition, buf lint, buf breaking](tapes/01-schema.gif)
+
+### Generate code, build, and migrate
+
+![Step 2: buf generate, dotnet build, atlas migrate diff](tapes/02-generate-and-build.gif)
+
+### Safety nets catch mistakes
+
+![Step 3: buf breaking and Mapperly catch proto drift](tapes/03-safety-nets.gif)
+
+## Branches
+
 | Branch | What changes | Contract enforcement |
 |--------|-------------|---------------------|
 | `demo/step-1-proto` | `tracks.proto` — service, messages, protovalidate | **Schema definition**: `buf lint` catches naming/style issues; protovalidate annotations declare constraints once |
 | `demo/step-2-generate` | `buf generate` output (C# + TypeScript) | **Code generation**: typed stubs, no handwritten DTOs, validation descriptors embedded in generated code |
 | `demo/step-3-backend` | EF Core entity, Mapperly mapper, gRPC service, Atlas migration | **Compile-time safety**: Mapperly fails the build if proto↔entity fields don't align; Atlas diffs desired schema from EF Core model |
 | `demo/step-4-client` | Next.js tracks page with form + protovalidate | **Same rules, both sides**: validation defined in proto, enforced at runtime in C# (interceptor) and TypeScript (protovalidate-js) |
+| `demo/break-proto` | Rename `Track.title` → `Track.name` | **Breakage demo**: `buf breaking` rejects it |
+| `demo/break-mapper` | Add `genre` to proto, skip entity | **Breakage demo**: `dotnet build` fails — Mapperly catches drift |
 
 ## Prerequisites
 
