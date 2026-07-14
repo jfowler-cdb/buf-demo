@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package cdbaby.demo.v1beta1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+service TrackService {
+  rpc GetTrack(GetTrackRequest) returns (GetTrackResponse);
+  rpc ListTracks(ListTracksRequest) returns (ListTracksResponse);
+  rpc CreateTrack(CreateTrackRequest) returns (CreateTrackResponse);
+  rpc UpdateTrack(UpdateTrackRequest) returns (UpdateTrackResponse);
+  rpc DeleteTrack(DeleteTrackRequest) returns (DeleteTrackResponse);
+}
+
+message Track {
+  // Output only.
+  string id = 1 [(buf.validate.field) = {
+    ignore: IGNORE_IF_ZERO_VALUE
+    string: {uuid: true}
+  }];
+  string title = 2 [(buf.validate.field).string.min_len = 1];
+  string artist = 3 [(buf.validate.field).string.min_len = 1];
+  google.protobuf.Duration duration = 4 [(buf.validate.field).required = true];
+  int32 track_number = 5 [(buf.validate.field).int32.gte = 1];
+  string isrc = 6 [(buf.validate.field).string = {
+    pattern: "^([A-Z]{2}[A-Z0-9]{3}[0-9]{7})?$"
+  }];
+
+  // IDs of releases this track appears on.
+  repeated string release_ids = 7;
+
+  // Output only.
+  google.protobuf.Timestamp create_time = 8 [(buf.validate.field).ignore = IGNORE_ALWAYS];
+  // Output only.
+  google.protobuf.Timestamp update_time = 9 [(buf.validate.field).ignore = IGNORE_ALWAYS];
+}
+
+message GetTrackRequest {
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message GetTrackResponse {
+  Track track = 1;
+}
+
+message ListTracksRequest {
+  int32 page_size = 1 [(buf.validate.field).int32 = {
+    gte: 0
+    lte: 100
+  }];
+  string page_token = 2;
+
+  // Optional: filter tracks by release ID.
+  string release_id = 3;
+}
+
+message ListTracksResponse {
+  repeated Track tracks = 1;
+  string next_page_token = 2;
+}
+
+message CreateTrackRequest {
+  Track track = 1 [(buf.validate.field).required = true];
+}
+
+message CreateTrackResponse {
+  Track track = 1;
+}
+
+message UpdateTrackRequest {
+  Track track = 1 [(buf.validate.field).required = true];
+}
+
+message UpdateTrackResponse {
+  Track track = 1;
+}
+
+message DeleteTrackRequest {
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+message DeleteTrackResponse {
+  Track track = 1;
+}
