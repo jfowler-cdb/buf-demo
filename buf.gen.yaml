@@ -1,0 +1,12 @@
+version: v2
+clean: true
+managed:
+  enabled: true
+plugins:
+- remote: buf.build/grpc/csharp:v1.82.1
+  out: API/gen
+- remote: buf.build/protocolbuffers/csharp:v35.1
+  out: API/gen
+- remote: buf.build/bufbuild/es:v2.12.1
+  out: client/src/gen
+  include_imports: true

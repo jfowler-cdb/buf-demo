@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package cdbaby.demo.v1beta1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+service ReleaseService {
+  rpc GetRelease(GetReleaseRequest) returns (GetReleaseResponse);
+  rpc ListReleases(ListReleasesRequest) returns (ListReleasesResponse);
+  rpc CreateRelease(CreateReleaseRequest) returns (CreateReleaseResponse);
+  rpc UpdateRelease(UpdateReleaseRequest) returns (UpdateReleaseResponse);
+  rpc DeleteRelease(DeleteReleaseRequest) returns (DeleteReleaseResponse);
+}
+
+message Release {
+  string id = 1;
+  string title = 2 [(buf.validate.field).string.min_len = 1];
+  string artist = 3 [(buf.validate.field).string.min_len = 1];
+  string label = 4;
+  google.protobuf.Timestamp release_date = 5 [(buf.validate.field).required = true];
+}
+
+message GetReleaseRequest {
+  string id = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message GetReleaseResponse {
+  Release release = 1;
+}
+
+message ListReleasesRequest {
+  int32 page_size = 1 [(buf.validate.field).int32 = {
+    gte: 0
+    lte: 100
+  }];
+  string page_token = 2;
+}
+
+message ListReleasesResponse {
+  repeated Release releases = 1;
+  string next_page_token = 2;
+}
+
+message CreateReleaseRequest {
+  Release release = 1 [(buf.validate.field).required = true];
+}
+
+message CreateReleaseResponse {
+  Release release = 1;
+}
+
+message UpdateReleaseRequest {
+  Release release = 1 [(buf.validate.field).required = true];
+}
+
+message UpdateReleaseResponse {
+  Release release = 1;
+}
+
+message DeleteReleaseRequest {
+  string id = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message DeleteReleaseResponse {
+  Release release = 1;
+}

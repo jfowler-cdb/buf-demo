@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+tasks:
+  generate:
+    desc: Generate Protobuf code using Buf
+    cmds:
+      - buf lint
+      - buf generate
+    silent: true
+
+  run:
+    desc: Run both API and client
+    cmds:
+      - trap 'kill 0' EXIT; dotnet run --project API & (cd client && npm run dev) & wait
+
+  run:api:
+    desc: Run the C# gRPC API
+    cmds:
+      - dotnet run --project API
+    silent: true
+
+  run:client:
+    desc: Run the Next.js client
+    dir: client
+    cmds:
+      - npm run dev
+    silent: true
+
+  test:
+    desc: Run tests
+    cmds:
+      - dotnet run --project API.Tests
+    silent: true
+
+  seed:
+    desc: Seed the database with sample releases
+    cmds:
+      - dotnet run --project API -- seed
+    silent: true
+
+  migrate:diff:
+    desc: Generate a new Atlas migration
+    cmds:
+      - atlas migrate diff --env local {{.CLI_ARGS}}
+    silent: true
+
+  migrate:apply:
+    desc: Apply Atlas migrations
+    cmds:
+      - atlas migrate apply --env local
+    silent: true
