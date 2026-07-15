@@ -23,11 +23,28 @@ Each step is on its own branch. Between steps, examine the diff to see exactly w
 | Branch | What changes | Contract enforcement |
 |--------|-------------|---------------------|
 | `demo/step-1-proto` | `tracks.proto` — service, messages, protovalidate | **Schema definition**: `buf lint` catches naming/style issues; protovalidate annotations declare constraints once |
-| `demo/step-2-generate` | `buf generate` output (C# + TypeScript) | **Code generation**: typed stubs, no handwritten DTOs, validation descriptors embedded in generated code |
+| `demo/step-2-generate` | `buf generate` output (C# + TypeScript + Go) | **Code generation**: typed stubs, no handwritten DTOs, validation descriptors embedded in generated code |
 | `demo/step-3-backend` | EF Core entity, Mapperly mapper, gRPC service, Atlas migration | **Compile-time safety**: Mapperly fails the build if proto↔entity fields don't align; Atlas diffs desired schema from EF Core model |
 | `demo/step-4-client` | Next.js tracks page with form + protovalidate | **Same rules, both sides**: validation defined in proto, enforced at runtime in C# (interceptor) and TypeScript (protovalidate-js) |
+| `demo/step-5-gateway` | Go gateway with Vanguard, REST API, OpenAPI spec | **Multi-language interop**: Connect JSON + REST + gRPC from one proto, two server languages |
 | `demo/break-proto` | Rename `Track.title` → `Track.name` | **Breakage demo**: `buf breaking` rejects it |
 | `demo/break-mapper` | Add `genre` to proto, skip entity | **Breakage demo**: `dotnet build` fails — Mapperly catches drift |
+
+## Tasks
+
+All demo steps are available as Taskfile commands. Each step chains its prerequisites automatically.
+
+| Command | What it does |
+|---------|-------------|
+| `task demo:reset` | Checkout main, reset DB, seed data |
+| `task demo:step1` | Proto definition + lint + breaking |
+| `task demo:step2` | Code generation |
+| `task demo:step3` | Backend build + migration + seed + tests |
+| `task demo:step4` | Client build |
+| `task demo:step5` | Go gateway build |
+| `task demo:break-proto` | Breaking change detection demo |
+| `task demo:break-mapper` | Mapper drift demo |
+| `task run` | Start all apps (C# API + Go gateway + Next.js client) |
 
 ## Prerequisites
 
@@ -35,11 +52,13 @@ Each step is on its own branch. Between steps, examine the diff to see exactly w
 # Tools
 brew install bufbuild/buf/buf
 brew install ariga/tap/atlas
+brew install yq
 dotnet tool install --global atlas-ef
 
 # Dependencies
 dotnet restore
 cd client && npm install && cd ..
+cd gateway && go mod tidy && cd ..
 ```
 
 ## Setup (start from main)
@@ -48,8 +67,8 @@ cd client && npm install && cd ..
 git checkout main
 task generate        # generate protobuf code
 task migrate:apply   # create the SQLite database
-task seed            # populate 100 sample releases
-task run             # start API (port 5000) + client (port 3000)
+task seed            # populate 100 sample releases + 30 tracks
+task run             # start C# API (5000) + Go gateway (8080) + Next.js (3000)
 ```
 
 Open http://localhost:3000 — you should see the Releases page.
@@ -160,15 +179,58 @@ Try submitting an empty form — the client catches it before the request is sen
 ### Run it
 
 ```sh
-# Apply the new migration
-export PATH="$PATH:$HOME/.dotnet/tools"
-atlas migrate apply --env local
-
-# Start both apps
+task migrate:apply
+task seed
 task run
 ```
 
 Open http://localhost:3000/tracks.
+
+---
+
+## Step 5 — Go gateway: Connect, REST, and OpenAPI
+
+```sh
+git checkout demo/step-5-gateway
+```
+
+```sh
+git diff demo/step-4-client..demo/step-5-gateway --stat
+```
+
+This step adds a **Go gateway** using [Vanguard](https://github.com/connectrpc/vanguard-go) as the single browser-facing entrypoint. The C# server becomes a pure gRPC backend (HTTP/2 only), and the Go gateway translates all incoming protocols.
+
+What was added:
+
+1. **`google.api.http` annotations** on both protos — standard REST path mappings
+2. **`gateway/main.go`** — Vanguard transcoder that accepts Connect (JSON), gRPC-Web, and REST, translates to gRPC binary, and proxies to C#
+3. **OpenAPI spec** — auto-generated from the same proto annotations, served at `/openapi/api.swagger.json`
+4. **Go TrackService example** — `gateway/service/track_service.go` shows implementing the same service in Go
+
+**Architecture:**
+```
+Browser (Connect JSON) → Go gateway (:8080) → Vanguard → gRPC binary → C# (:5000)
+                            ├── Connect: JSON request/response (inspectable in DevTools)
+                            ├── REST:    /v1beta1/releases, /v1beta1/tracks
+                            └── OpenAPI: /openapi/api.swagger.json
+```
+
+**Three ways to access the same data:**
+```sh
+# Connect protocol (JSON) — what the browser uses
+curl -s http://localhost:8080/cdbaby.demo.v1beta1.ReleaseService/ListReleases \
+  -H "Content-Type: application/json" \
+  -H "Connect-Protocol-Version: 1" \
+  -d '{"pageSize": 2}'
+
+# REST (standard HTTP verbs + paths)
+curl -s "http://localhost:8080/v1beta1/releases?page_size=2"
+
+# OpenAPI spec
+curl -s http://localhost:8080/openapi/api.swagger.json
+```
+
+**Key point**: One `.proto` file generates C#, TypeScript, and Go code. The Go gateway adds REST and Connect JSON without any handwritten HTTP handlers. The C# server doesn't know or care — it just speaks gRPC.
 
 ---
 
@@ -184,6 +246,8 @@ Open http://localhost:3000/tracks.
 | **Client runtime** | `@bufbuild/protovalidate` | Same rules, instant feedback — no round-trip to server |
 | **Proto → Entity** | Mapperly (compile-time) | Missing field mappings, type mismatches between proto and DB model |
 | **Entity → DB** | Atlas (schema diff) | Schema drift — EF Core model doesn't match actual DB |
+| **Protocol translation** | Vanguard (runtime) | Connect JSON, gRPC-Web, REST, and gRPC all derived from the same proto |
+| **API documentation** | OpenAPI (generated) | Spec is always in sync — generated from `google.api.http` annotations |
 
 ## Additional things to highlight
 
@@ -239,5 +303,5 @@ Mapperly (with `WarningsAsErrors` set to `RMG012;RMG020` in the csproj) fails th
 
 Switch back when done:
 ```sh
-git checkout demo/step-4-client
+git checkout demo/step-5-gateway
 ```

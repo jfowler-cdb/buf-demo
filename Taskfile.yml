@@ -8,12 +8,13 @@ tasks:
     cmds:
       - buf lint
       - buf generate
+      - yq -P -o yaml gateway/openapi/api.swagger.json > gateway/openapi/api.swagger.yaml
     silent: true
 
   run:
-    desc: Run both API and client
+    desc: Run API, gateway, and client
     cmds:
-      - trap 'kill 0' EXIT; dotnet run --project API & (cd client && npm run dev) & wait
+      - trap 'kill 0' EXIT; dotnet run --project API & (cd gateway && go run .) & (cd client && npm run dev) & wait
 
   run:api:
     desc: Run the C# gRPC API
@@ -108,7 +109,26 @@ tasks:
       - git checkout demo/step-4-client
       - cd client && npm run build
       - echo ""
-      - echo "✓ Ready — run 'task run' to start both apps"
+      - echo "✓ Client built — run 'task run' to start all apps"
+
+  demo:step5:
+    desc: "Step 5: Go gateway — Connect, REST, OpenAPI"
+    cmds:
+      - task: demo:step4
+      - git checkout demo/step-5-gateway
+      - task generate
+      - cd gateway && go build ./...
+      - echo ""
+      - echo "━━━ curl Connect JSON ━━━"
+      - 'echo "curl -s http://localhost:8080/cdbaby.demo.v1beta1.ReleaseService/ListReleases -H ''Content-Type: application/json'' -H ''Connect-Protocol-Version: 1'' -d ''{\"pageSize\":2}''"'
+      - echo ""
+      - echo "━━━ curl REST ━━━"
+      - 'echo "curl -s http://localhost:8080/v1beta1/releases?page_size=2"'
+      - echo ""
+      - echo "━━━ OpenAPI spec ━━━"
+      - 'echo "curl -s http://localhost:8080/openapi/api.swagger.json"'
+      - echo ""
+      - echo "✓ Gateway built — run 'task run' to start all apps"
 
   demo:break-proto:
     desc: "Break demo: renamed proto field"
