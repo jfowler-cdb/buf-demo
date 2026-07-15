@@ -1,0 +1,626 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "cdbaby/demo/v1beta1/releases.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ReleaseService"
+    },
+    {
+      "name": "TrackService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1beta1/releases": {
+      "get": {
+        "operationId": "ReleaseService_ListReleases",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ListReleasesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ReleaseService"
+        ]
+      },
+      "post": {
+        "operationId": "ReleaseService_CreateRelease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateReleaseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "release",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1Release"
+            }
+          }
+        ],
+        "tags": [
+          "ReleaseService"
+        ]
+      }
+    },
+    "/v1beta1/releases/{id}": {
+      "get": {
+        "operationId": "ReleaseService_GetRelease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1GetReleaseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ReleaseService"
+        ]
+      },
+      "delete": {
+        "operationId": "ReleaseService_DeleteRelease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1DeleteReleaseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ReleaseService"
+        ]
+      }
+    },
+    "/v1beta1/releases/{release.id}": {
+      "patch": {
+        "operationId": "ReleaseService_UpdateRelease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1UpdateReleaseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "release.id",
+            "description": "Output only.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "release",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "artist": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "releaseDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Output only.",
+                  "readOnly": true
+                },
+                "updateTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Output only.",
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "ReleaseService"
+        ]
+      }
+    },
+    "/v1beta1/tracks": {
+      "get": {
+        "operationId": "TrackService_ListTracks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ListTracksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "releaseId",
+            "description": "Optional: filter tracks by release ID.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TrackService"
+        ]
+      },
+      "post": {
+        "operationId": "TrackService_CreateTrack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateTrackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "track",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1Track"
+            }
+          }
+        ],
+        "tags": [
+          "TrackService"
+        ]
+      }
+    },
+    "/v1beta1/tracks/{id}": {
+      "get": {
+        "operationId": "TrackService_GetTrack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1GetTrackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TrackService"
+        ]
+      },
+      "delete": {
+        "operationId": "TrackService_DeleteTrack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1DeleteTrackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TrackService"
+        ]
+      }
+    },
+    "/v1beta1/tracks/{track.id}": {
+      "patch": {
+        "operationId": "TrackService_UpdateTrack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1beta1UpdateTrackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "track.id",
+            "description": "Output only.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "track",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "artist": {
+                  "type": "string"
+                },
+                "duration": {
+                  "type": "string"
+                },
+                "trackNumber": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "isrc": {
+                  "type": "string"
+                },
+                "releaseIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "IDs of releases this track appears on."
+                },
+                "createTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Output only.",
+                  "readOnly": true
+                },
+                "updateTime": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Output only.",
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "TrackService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1beta1CreateReleaseResponse": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "$ref": "#/definitions/v1beta1Release"
+        }
+      }
+    },
+    "v1beta1CreateTrackResponse": {
+      "type": "object",
+      "properties": {
+        "track": {
+          "$ref": "#/definitions/v1beta1Track"
+        }
+      }
+    },
+    "v1beta1DeleteReleaseResponse": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "$ref": "#/definitions/v1beta1Release"
+        }
+      }
+    },
+    "v1beta1DeleteTrackResponse": {
+      "type": "object",
+      "properties": {
+        "track": {
+          "$ref": "#/definitions/v1beta1Track"
+        }
+      }
+    },
+    "v1beta1GetReleaseResponse": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "$ref": "#/definitions/v1beta1Release"
+        }
+      }
+    },
+    "v1beta1GetTrackResponse": {
+      "type": "object",
+      "properties": {
+        "track": {
+          "$ref": "#/definitions/v1beta1Track"
+        }
+      }
+    },
+    "v1beta1ListReleasesResponse": {
+      "type": "object",
+      "properties": {
+        "releases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1beta1Release"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "v1beta1ListTracksResponse": {
+      "type": "object",
+      "properties": {
+        "tracks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1beta1Track"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
+    "v1beta1Release": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Output only.",
+          "readOnly": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Output only.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Output only.",
+          "readOnly": true
+        }
+      }
+    },
+    "v1beta1Track": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Output only.",
+          "readOnly": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "trackNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isrc": {
+          "type": "string"
+        },
+        "releaseIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of releases this track appears on."
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Output only.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Output only.",
+          "readOnly": true
+        }
+      }
+    },
+    "v1beta1UpdateReleaseResponse": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "$ref": "#/definitions/v1beta1Release"
+        }
+      }
+    },
+    "v1beta1UpdateTrackResponse": {
+      "type": "object",
+      "properties": {
+        "track": {
+          "$ref": "#/definitions/v1beta1Track"
+        }
+      }
+    }
+  }
+}

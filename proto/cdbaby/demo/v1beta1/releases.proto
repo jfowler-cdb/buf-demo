@@ -3,14 +3,31 @@ syntax = "proto3";
 package cdbaby.demo.v1beta1;
 
 import "buf/validate/validate.proto";
+import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 service ReleaseService {
-  rpc GetRelease(GetReleaseRequest) returns (GetReleaseResponse);
-  rpc ListReleases(ListReleasesRequest) returns (ListReleasesResponse);
-  rpc CreateRelease(CreateReleaseRequest) returns (CreateReleaseResponse);
-  rpc UpdateRelease(UpdateReleaseRequest) returns (UpdateReleaseResponse);
-  rpc DeleteRelease(DeleteReleaseRequest) returns (DeleteReleaseResponse);
+  rpc GetRelease(GetReleaseRequest) returns (GetReleaseResponse) {
+    option (google.api.http) = {get: "/v1beta1/releases/{id}"};
+  }
+  rpc ListReleases(ListReleasesRequest) returns (ListReleasesResponse) {
+    option (google.api.http) = {get: "/v1beta1/releases"};
+  }
+  rpc CreateRelease(CreateReleaseRequest) returns (CreateReleaseResponse) {
+    option (google.api.http) = {
+      post: "/v1beta1/releases"
+      body: "release"
+    };
+  }
+  rpc UpdateRelease(UpdateReleaseRequest) returns (UpdateReleaseResponse) {
+    option (google.api.http) = {
+      patch: "/v1beta1/releases/{release.id}"
+      body: "release"
+    };
+  }
+  rpc DeleteRelease(DeleteReleaseRequest) returns (DeleteReleaseResponse) {
+    option (google.api.http) = {delete: "/v1beta1/releases/{id}"};
+  }
 }
 
 message Release {

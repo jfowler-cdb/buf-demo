@@ -2,6 +2,20 @@ version: v2
 clean: true
 managed:
   enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: github.com/jfowler-cdb/buf-demo/gateway/gen
+  disable:
+    - file_option: go_package
+      module: buf.build/bufbuild/protovalidate
+    - file_option: go_package
+      module: buf.build/google/cel-spec
+    - file_option: go_package
+      module: buf.build/googleapis/googleapis
+
+inputs:
+  - directory: proto
+
 plugins:
 - remote: buf.build/grpc/csharp:v1.82.1
   out: API/gen
@@ -10,3 +24,20 @@ plugins:
 - remote: buf.build/bufbuild/es:v2.12.1
   out: client/src/gen
   include_imports: true
+- remote: buf.build/grpc/go:v1.6.2
+  out: gateway/gen
+  opt:
+    - paths=source_relative
+- remote: buf.build/protocolbuffers/go:v1.36.11
+  out: gateway/gen
+  opt:
+    - paths=source_relative
+- remote: buf.build/connectrpc/go:v1.20.0
+  out: gateway/gen
+  opt:
+    - paths=source_relative
+- remote: buf.build/grpc-ecosystem/openapiv2:v2.29.0
+  out: gateway/openapi
+  opt:
+    - allow_merge=true
+    - merge_file_name=api

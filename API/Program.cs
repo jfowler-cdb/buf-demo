@@ -7,6 +7,14 @@ using Microsoft.EntityFrameworkCore;
 using ProtoValidate;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // HTTP/2 only — browser access goes through Go gateway
+    options.ListenLocalhost(5000, o =>
+    {
+        o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+    });
+});
 builder.Services.AddDbContext<ReleasesDbContext>(options =>
     options.UseSqlite("Data Source=releases.db"));
 builder.Services.AddGrpc(options =>
@@ -17,17 +25,6 @@ builder.Services.AddProtoValidate(options =>
 {
     options.FileDescriptors = [ReleasesReflection.Descriptor];
 });
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://localhost:3000")
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
-    });
-});
-
 var app = builder.Build();
 
 // Handle `dotnet run -- seed` command
@@ -40,9 +37,7 @@ if (args.Length > 0 && args[0] == "seed")
     return;
 }
 
-app.UseCors();
-app.UseGrpcWeb();
-app.MapGrpcService<ReleaseServiceImpl>().EnableGrpcWeb();
-app.MapGrpcService<TrackServiceImpl>().EnableGrpcWeb();
+app.MapGrpcService<ReleaseServiceImpl>();
+app.MapGrpcService<TrackServiceImpl>();
 
 app.Run();

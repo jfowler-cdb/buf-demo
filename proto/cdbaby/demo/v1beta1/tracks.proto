@@ -3,15 +3,32 @@ syntax = "proto3";
 package cdbaby.demo.v1beta1;
 
 import "buf/validate/validate.proto";
+import "google/api/annotations.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 service TrackService {
-  rpc GetTrack(GetTrackRequest) returns (GetTrackResponse);
-  rpc ListTracks(ListTracksRequest) returns (ListTracksResponse);
-  rpc CreateTrack(CreateTrackRequest) returns (CreateTrackResponse);
-  rpc UpdateTrack(UpdateTrackRequest) returns (UpdateTrackResponse);
-  rpc DeleteTrack(DeleteTrackRequest) returns (DeleteTrackResponse);
+  rpc GetTrack(GetTrackRequest) returns (GetTrackResponse) {
+    option (google.api.http) = {get: "/v1beta1/tracks/{id}"};
+  }
+  rpc ListTracks(ListTracksRequest) returns (ListTracksResponse) {
+    option (google.api.http) = {get: "/v1beta1/tracks"};
+  }
+  rpc CreateTrack(CreateTrackRequest) returns (CreateTrackResponse) {
+    option (google.api.http) = {
+      post: "/v1beta1/tracks"
+      body: "track"
+    };
+  }
+  rpc UpdateTrack(UpdateTrackRequest) returns (UpdateTrackResponse) {
+    option (google.api.http) = {
+      patch: "/v1beta1/tracks/{track.id}"
+      body: "track"
+    };
+  }
+  rpc DeleteTrack(DeleteTrackRequest) returns (DeleteTrackResponse) {
+    option (google.api.http) = {delete: "/v1beta1/tracks/{id}"};
+  }
 }
 
 message Track {
